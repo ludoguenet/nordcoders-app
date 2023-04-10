@@ -2,21 +2,23 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Auth\AuthenticateController;
-use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Posts\IndexController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'app');
+Route::view('/', 'app')->name('homepage');
 
-Route::view('login', 'auth.login')->name('login');
-Route::post('login', AuthenticateController::class)->name('authenticate');
+Route::middleware(['auth', 'web'])->group(static function (): void {
+    Route::prefix('dashboard')
+        ->as('dashboard.')
+        ->group(static function (): void {
+            Route::view('/', 'dashboard')->name('index');
+        });
+});
 
-Route::middleware(['auth', 'web'])
+Route::prefix('posts')
+    ->as('posts.')
     ->group(static function (): void {
-        Route::prefix('dashboard')
-            ->as('dashboard.')
-            ->group(static function (): void {
-                Route::view('/', 'dashboard')->name('index');
-                Route::get('logout', LogoutController::class)->name('logout');
-            });
+        Route::get('/', IndexController::class)->name('index');
     });
+
+require 'auth.php';

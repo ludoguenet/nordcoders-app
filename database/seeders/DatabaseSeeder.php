@@ -13,10 +13,12 @@ final class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Nord Coders',
-            'email' => 'contact@nordcoders.fr',
-            'password' => Hash::make('admin'),
-        ]);
+        User::factory()
+            ->hasPosts(3)
+            ->create([
+                'name' => 'Nord Coders',
+                'email' => 'contact@nordcoders.fr',
+                'password' => Hash::make('admin'),
+            ]);
     }
 }

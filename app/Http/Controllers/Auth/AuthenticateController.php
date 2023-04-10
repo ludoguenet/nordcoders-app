@@ -19,9 +19,7 @@ final class AuthenticateController extends Controller
 
         return redirect()
             ->route('login')
-            ->withInput([
-                'email',
-            ])
+            ->withInput()
             ->withErrors([
                 'credentials' => 'bad credentials',
             ]);
