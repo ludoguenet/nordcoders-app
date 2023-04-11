@@ -17,7 +17,7 @@ final class IndexController extends Controller
         $posts = Post::query()
             ->with('author')
             ->orderByDesc('created_at')
-            ->get();
+            ->paginate(15);
 
         return view(
             view: 'posts.index',

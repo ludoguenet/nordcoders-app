@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Enum\Post;
+namespace App\Enums\Post;
 
 enum PostStatusEnum: string
 {

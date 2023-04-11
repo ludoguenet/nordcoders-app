@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Post\ShowController;
 use App\Http\Controllers\Posts\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ Route::prefix('posts')
     ->as('posts.')
     ->group(static function (): void {
         Route::get('/', IndexController::class)->name('index');
+        Route::get('{post:slug}', ShowController::class)->name('show');
     });
 
 require 'auth.php';
