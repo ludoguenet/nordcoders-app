@@ -26,7 +26,7 @@ it('can authenticate user', function () {
     assertAuthenticatedAs($user);
 });
 
-it('redirects if bad credentials', function () {
+it('shows errors if bad credentials', function () {
     $password = fake()->password(8);
     User::factory()->create([
         'email' => fake()->email,
