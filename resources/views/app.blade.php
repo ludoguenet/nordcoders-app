@@ -7,7 +7,14 @@
 
         <title>Nord Coders</title>
 
+        <!-- resources -->
+        <script src="//unpkg.com/alpinejs" defer></script>
+
         <!-- Styles -->
+        <style>
+            [x-cloak] { display: none !important; }
+        </style>
+        
         @vite('resources/css/app.css')
     </head>
     <body>

@@ -59,9 +59,9 @@
             "@php ./vendor/bin/pest"
         ],
         "clean": [
-            "@php composer pint",
-            "@php composer phpstan",
-            "@php composer test"
+            "@php ./vendor/bin/pint",
+            "@php ./vendor/bin/phpstan analyse",
+            "@php ./vendor/bin/pest"
         ]
     },
     "extra": {
