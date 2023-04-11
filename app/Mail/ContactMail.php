@@ -15,8 +15,11 @@ final class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public string $senderMail, public string $senderSubject, public string $senderMessage)
-    {
+    public function __construct(
+        public string $senderMail,
+        public string $senderSubject,
+        public string $senderMessage,
+    ) {
     }
 
     /**

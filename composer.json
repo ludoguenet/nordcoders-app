@@ -13,7 +13,7 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
-        "laravel/pint": "^1.0",
+        "laravel/pint": "^1.8",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
@@ -21,8 +21,7 @@
         "pestphp/pest": "^2.4",
         "pestphp/pest-plugin-laravel": "^2.0",
         "phpunit/phpunit": "^10.0",
-        "spatie/laravel-ignition": "^2.0",
-        "tightenco/duster": "^1.2"
+        "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -50,8 +49,8 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "duster": [
-            "@php ./vendor/bin/duster fix"
+        "pint": [
+            "@php ./vendor/bin/pint"
         ],
         "phpstan": [
             "@php ./vendor/bin/phpstan analyse"
@@ -60,7 +59,7 @@
             "@php ./vendor/bin/pest"
         ],
         "clean": [
-            "@php composer duster",
+            "@php composer pint",
             "@php composer phpstan",
             "@php composer test"
         ]
