@@ -4,8 +4,15 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Contact\IndexController as IndexContactController;
 use App\Http\Controllers\Contact\StoreController as StoreContactController;
+use App\Http\Controllers\Dashboard\IndexController as IndexDashboardController;
+use App\Http\Controllers\Dashboard\Post\CreateController;
+use App\Http\Controllers\Dashboard\Post\DestroyController;
+use App\Http\Controllers\Dashboard\Post\EditController;
+use App\Http\Controllers\Dashboard\Post\IndexController as IndexDashboardPostController;
+use App\Http\Controllers\Dashboard\Post\StoreController;
+use App\Http\Controllers\Dashboard\Post\UpdateController;
+use App\Http\Controllers\Post\IndexController;
 use App\Http\Controllers\Post\ShowController;
-use App\Http\Controllers\Posts\IndexController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'homepage')->name('homepage');
@@ -14,7 +21,18 @@ Route::middleware(['auth', 'web'])->group(static function (): void {
     Route::prefix('dashboard')
         ->as('dashboard.')
         ->group(static function (): void {
-            Route::view('/', 'dashboard')->name('index');
+            Route::get('/', IndexDashboardController::class)->name('index');
+
+            Route::prefix('posts')
+                ->as('posts.')
+                ->group(static function (): void {
+                    Route::get('/', IndexDashboardPostController::class)->name('index');
+                    Route::get('/create', CreateController::class)->name('create');
+                    Route::post('/store', StoreController::class)->name('store');
+                    Route::get('/edit/{post}', EditController::class)->name('edit');
+                    Route::put('/{post}', UpdateController::class)->name('update');
+                    Route::delete('/{post}', DestroyController::class)->name('destroy');
+                });
         });
 });
 

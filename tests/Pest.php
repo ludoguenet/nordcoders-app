@@ -9,7 +9,7 @@ use function Pest\Laravel\actingAs;
 uses(
     Tests\TestCase::class,
     Illuminate\Foundation\Testing\RefreshDatabase::class,
-)->in('Feature');
+)->in('Feature', 'Unit');
 
 function createAndLoggedIn(
     array $attributes = [],

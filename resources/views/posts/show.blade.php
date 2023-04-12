@@ -9,7 +9,7 @@
             </h1>
             <div class="mt-16 max-w-2xl">
                 <p class="mt-6">
-                    {{ $post->content }}
+                    {!! $post->content !!}
                 </p>
             </div>
         </div>

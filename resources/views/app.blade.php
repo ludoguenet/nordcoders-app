@@ -14,7 +14,7 @@
         <style>
             [x-cloak] { display: none !important; }
         </style>
-        
+
         @vite('resources/css/app.css')
     </head>
     <body>
@@ -23,5 +23,8 @@
             @yield('content')
         </div>
         @include('includes.footer')
+
+        <!-- Extra Scripts -->
+        @yield('extra-js')
     </body>
 </html>
