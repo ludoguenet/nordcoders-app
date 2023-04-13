@@ -2,11 +2,28 @@
 
 declare(strict_types=1);
 
+use App\Models\Post;
 use App\Models\User;
 
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseCount;
+use function Pest\Laravel\get;
 use function Pest\Laravel\put;
+
+it('has an edit page', function () {
+    createAndLoggedIn();
+    $post = Post::factory()->create();
+
+    get(
+        uri: route(
+            name: 'dashboard.posts.edit',
+            parameters: [
+                'post' => $post,
+            ],
+        ),
+    )
+        ->assertOk();
+});
 
 it('can update a post', function () {
     $user = User::factory()

@@ -7,15 +7,12 @@
 
         <title>Nord Coders</title>
 
-        <!-- resources -->
-        <script src="//unpkg.com/alpinejs" defer></script>
-
         <!-- Styles -->
         <style>
             [x-cloak] { display: none !important; }
         </style>
 
-        @vite('resources/css/app.css')
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
         @include('includes.navbar')
@@ -23,8 +20,5 @@
             @yield('content')
         </div>
         @include('includes.footer')
-
-        <!-- Extra Scripts -->
-        @yield('extra-js')
     </body>
 </html>

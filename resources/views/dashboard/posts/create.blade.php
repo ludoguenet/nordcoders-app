@@ -3,40 +3,49 @@
 @section('content')
     @include('includes.errors')
 
-    <form
-        action="{{ route('dashboard.posts.store') }}"
-        method="post"
-    >
-        @csrf
-        <div class="mb-6">
-            <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your title</label>
-            <input type="text" name="title" value="{{ old('title') }}" id="title" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required>
+    <div class="bg-white py-6">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <form
+                action="{{ route('dashboard.posts.store') }}"
+                method="post"
+                id="editor-post-form"
+            >
+                @csrf
+                <div class="mb-6">
+                    <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Titre
+                    </label>
+                    <input
+                        type="text"
+                        name="title"
+                        value="{{ old('title') }}"
+                        id="title"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500 dark:shadow-sm-light"
+                        placeholder="Mon super titre..."
+                        required
+                    >
+                </div>
+
+                <div class="mb-6 hidden">
+                    <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your content</label>
+                    <textarea id="content" name="content" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500" placeholder="Leave a comment...">{{ old('content') }}</textarea>
+                </div>
+
+                <div class="flex flex-col space-y-2">
+                    <label for="editor" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
+                        Contenu
+                    </label>
+                    <div id="editor" class="block w-full rounded-md border-gray-300 shadow-sm">
+                    </div>
+                </div>
+
+                <button
+                    type="submit"
+                    class="mt-5 text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800"
+                >
+                    Enregistrer l'article
+                </button>
+            </form>
         </div>
-
-        <div class="mb-6">
-            <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your content</label>
-            <textarea id="content" name="content" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500" placeholder="Leave a comment...">{{ old('content') }}</textarea>
-        </div>
-
-        <button type="submit" class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">Register new account</button>
-    </form>
-@endsection
-
-@section('extra-js')
-    <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
-
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#content' ),  {
-                codeBlock: {
-                    languages: [
-                        { language: 'css', label: 'CSS' },
-                        { language: 'html', label: 'HTML' }
-                    ]
-                }
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
+    </div>
 @endsection

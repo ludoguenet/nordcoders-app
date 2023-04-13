@@ -5,7 +5,17 @@ declare(strict_types=1);
 use App\Models\Post;
 
 use function Pest\Laravel\assertDatabaseCount;
+use function Pest\Laravel\get;
 use function Pest\Laravel\post;
+
+it('has a create page', function () {
+    createAndLoggedIn();
+
+    get(
+        uri: route('dashboard.posts.create'),
+    )
+        ->assertOk();
+});
 
 it('can store a post', function () {
     $user = createAndLoggedIn();

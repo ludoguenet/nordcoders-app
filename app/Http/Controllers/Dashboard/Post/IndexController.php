@@ -17,7 +17,7 @@ final class IndexController extends Controller
         $posts = Post::query()
             ->where('user_id', auth()->id())
             ->orderByDesc('created_at')
-            ->paginate(15);
+            ->simplePaginate(15);
 
         return view(
             view: 'dashboard.posts.index',

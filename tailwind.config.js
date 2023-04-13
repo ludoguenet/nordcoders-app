@@ -7,12 +7,10 @@ module.exports = {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
     ],
     safelist: [
-        'bg-green-50',
-        'text-green-600',
         'bg-green-100',
-        'bg-cyan-50',
-        'text-cyan-600',
+        'text-green-800',
         'bg-cyan-100',
+        'text-cyan-800',
     ],
     theme: {
         extend: {},

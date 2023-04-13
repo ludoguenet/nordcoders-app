@@ -4,21 +4,31 @@
     <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl lg:mx-0">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h2>
-                <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.</p>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                    Quelques articles
+                </h2>
+                <p class="mt-2 text-lg leading-8 text-gray-600">
+                    Améliorez votre expérience de développement web sur Laravel et Vue.
+
+                </p>
             </div>
             <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                 @foreach ($posts as $post)
                     <article class="flex max-w-xl flex-col items-start justify-between">
                         <div class="flex items-center gap-x-4 text-xs">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
-                            </svg>
-                            <time datetime="{{ $post->created_at->format('Y-m-d') }}" class="text-gray-500">
-                                {{ $post->created_at->format('d/m/Y') }}
-                            </time>
-                            <a href="{{ route('posts.show', $post->slug) }}" class="relative z-10 rounded-full bg-{{ $post->status_color }}-50 px-3 py-1.5 font-medium text-{{ $post->status_color }}-600 hover:bg-{{ $post->status_color }}-100">
-                                {{ $post->status }}
+                            <div class="flex items-center gap-x-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-5 h-5 text-gray-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                                </svg>
+                                <time datetime="{{ $post->created_at->format('Y-m-d') }}" class="text-gray-500">
+                                    {{ $post->created_at->format('d/m/Y') }}
+                                </time>
+                            </div>
+                            <a href="{{ route('posts.show', $post->slug) }}" class="relative z-10 rounded-full bg-lime-50 px-3 py-1.5 font-medium text-lime-600 hover:bg-lime-100">
+                                Vue
+                            </a>
+                            <a href="{{ route('posts.show', $post->slug) }}" class="relative z-10 rounded-full bg-red-50 px-3 py-1.5 font-medium text-red-600 hover:bg-red-100">
+                                Laravel
                             </a>
                         </div>
                         <div class="group relative">
