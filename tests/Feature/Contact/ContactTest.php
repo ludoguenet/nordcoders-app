@@ -23,7 +23,9 @@ it('can send contact email', function () {
     Mail::assertSent(static function (ContactMail $mail) use ($senderEmail, $senderSubject) {
         return $mail->hasTo('ludovicguenet@gmx.com') &&
                 $mail->hasFrom($senderEmail) &&
-                $mail->hasSubject($senderSubject);
+                $mail->hasSubject($senderSubject) &&
+                $mail->assertSeeInHtml('Contact mail') &&
+                count($mail->attachments()) === 0;
     });
 });
 
