@@ -11,11 +11,12 @@ use App\Http\Controllers\Dashboard\Post\EditController;
 use App\Http\Controllers\Dashboard\Post\IndexController as IndexDashboardPostController;
 use App\Http\Controllers\Dashboard\Post\StoreController;
 use App\Http\Controllers\Dashboard\Post\UpdateController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Post\IndexController;
 use App\Http\Controllers\Post\ShowController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'homepage')->name('homepage');
+Route::get('/', HomePageController::class)->name('homepage');
 
 Route::middleware(['auth', 'web'])->group(static function (): void {
     Route::prefix('dashboard')

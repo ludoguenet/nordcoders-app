@@ -15,6 +15,9 @@ final class IndexController extends Controller
         Request $request
     ): View {
         $posts = Post::query()
+            ->with([
+                'tags',
+            ])
             ->where('user_id', auth()->id())
             ->orderByDesc('created_at')
             ->simplePaginate(15);

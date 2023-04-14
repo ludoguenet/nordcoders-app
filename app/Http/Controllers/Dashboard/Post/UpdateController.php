@@ -17,7 +17,7 @@ final class UpdateController extends Controller
         UpdateRequest $request,
     ): RedirectResponse {
         /**
-         * @var array{title: string, content: string} $attributes
+         * @var  array{title: string, content: string, user_id: int, tag_ids: array<int, int>}  $attributes
          */
         $attributes = $request->validated();
 

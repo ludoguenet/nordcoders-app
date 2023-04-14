@@ -7,6 +7,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Enums\Post\PostStatusEnum;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,7 @@ final class DatabaseSeeder extends Seeder
         User::factory()
             ->has(
                 Post::factory(30)
+                    ->has(Tag::factory()->count(3))
                     ->state(new Sequence(
                         ['status' => PostStatusEnum::DRAFT],
                         ['status' => PostStatusEnum::PUBLISHED],

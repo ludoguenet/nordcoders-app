@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Requests\Dashboard\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Exists;
 
 final class StoreRequest extends FormRequest
 {
@@ -16,7 +18,7 @@ final class StoreRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, array<int, string>>
+     * @return array<string, array<int, Exists|string>>
      */
     public function rules(): array
     {
@@ -35,6 +37,10 @@ final class StoreRequest extends FormRequest
                 'required',
                 'exists:users,id',
             ],
+            'tag_ids' => [
+                'array',
+                Rule::exists('tags', 'id'),
+            ],
         ];
     }
 
@@ -42,6 +48,7 @@ final class StoreRequest extends FormRequest
     {
         $this->merge([
             'user_id' => auth()->id(),
+            'tag_ids' => explode(',', strval($this->selected_tags)),
         ]);
     }
 }

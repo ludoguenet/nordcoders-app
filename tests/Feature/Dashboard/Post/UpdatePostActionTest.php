@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 
 use function Pest\Laravel\actingAs;
@@ -30,6 +31,8 @@ it('can update a post', function () {
         ->hasPosts()
         ->create();
 
+    $tags = Tag::factory(3)->create();
+
     $post = $user->posts()->firstOrFail();
 
     actingAs($user);
@@ -44,7 +47,8 @@ it('can update a post', function () {
         data: [
             'title' => $title = fake()->sentence,
             'content' => $content = fake()->paragraphs(3, true),
-        ]
+            'selected_tags' => $tags->pluck('id')->implode(','),
+        ],
     )
         ->assertRedirect()
         ->assertSessionHas('success');
@@ -55,6 +59,7 @@ it('can update a post', function () {
     expect($post->slug)->toBe(\Illuminate\Support\Str::slug($title));
     expect($post->content)->toBe($content);
     expect($post->user_id)->toBe($user->id);
+    expect($post->tags->pluck('id')->toArray())->toBe($tags->pluck('id')->toArray());
 
     assertDatabaseCount('posts', 1);
 });

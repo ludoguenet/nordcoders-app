@@ -15,7 +15,7 @@ final class StoreController extends Controller
         StoreRequest $request,
     ): RedirectResponse {
         /**
-         * @var array{title: string, content: string, user_id: int} $attributes
+         * @var  array{title: string, content: string, user_id: int, tag_ids: array<int, int>}  $attributes
          */
         $attributes = $request->validated();
 

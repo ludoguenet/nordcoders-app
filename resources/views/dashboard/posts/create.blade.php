@@ -31,12 +31,21 @@
                     <textarea id="content" name="content" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500" placeholder="Leave a comment...">{{ old('content') }}</textarea>
                 </div>
 
-                <div class="flex flex-col space-y-2">
+                <div class="flex flex-col mb-6 space-y-2">
                     <label for="editor" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
                         Contenu
                     </label>
                     <div id="editor" class="block w-full rounded-md border-gray-300 shadow-sm">
                     </div>
+                </div>
+
+                <div class="flex flex-col space-y-2">
+                    <label for="editor" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
+                        Tags
+                    </label>
+                     <x-forms.multi-select
+                         :tags="$tags"
+                     />
                 </div>
 
                 <button

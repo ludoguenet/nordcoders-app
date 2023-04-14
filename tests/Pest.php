@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Enums\Post\PostStatusEnum;
 use App\Models\User;
 
 use function Pest\Laravel\actingAs;
@@ -20,3 +21,7 @@ function createAndLoggedIn(
 
     return $user;
 }
+
+expect()->extend('toBePublished', function () {
+    return $this->status->toBe(PostStatusEnum::PUBLISHED);
+});

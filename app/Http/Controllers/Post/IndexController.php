@@ -15,7 +15,11 @@ final class IndexController extends Controller
         Request $request
     ): View {
         $posts = Post::query()
-            ->with('author')
+            ->with([
+                'author',
+                'tags',
+            ])
+            ->published()
             ->orderByDesc('created_at')
             ->simplePaginate(15);
 

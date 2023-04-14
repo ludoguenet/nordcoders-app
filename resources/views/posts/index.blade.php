@@ -24,12 +24,11 @@
                                     {{ $post->created_at->format('d/m/Y') }}
                                 </time>
                             </div>
-                            <a href="{{ route('posts.show', $post->slug) }}" class="relative z-10 rounded-full bg-lime-50 px-3 py-1.5 font-medium text-lime-600 hover:bg-lime-100">
-                                Vue
-                            </a>
-                            <a href="{{ route('posts.show', $post->slug) }}" class="relative z-10 rounded-full bg-red-50 px-3 py-1.5 font-medium text-red-600 hover:bg-red-100">
-                                Laravel
-                            </a>
+                            @foreach($post->tags as $tag)
+                                <a href="{{ route('posts.show', $post->slug) }}" class="relative z-10 rounded-full bg-{{ $tag->colour->value }}-50 px-3 py-1.5 font-medium text-{{ $tag->colour }}-600 hover:bg-{{ $tag->colour }}-100">
+                                    {{ $tag->name }}
+                                </a>
+                            @endforeach
                         </div>
                         <div class="group relative">
                             <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
