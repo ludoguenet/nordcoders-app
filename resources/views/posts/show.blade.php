@@ -10,9 +10,13 @@
                 {{ $post->title }}
             </h1>
             <div class="mt-8 max-w-2xl">
-                <p class="mt-6">
-                    {!! $post->content !!}
-                </p>
+                <div class="mt-6">
+                    <article
+                        class="mx-auto prose prose-neutral"
+                    >
+                        {!! $post->content !!}
+                    </article>
+                </div>
             </div>
         </div>
     </div>

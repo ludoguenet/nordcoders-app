@@ -20,12 +20,26 @@ final class UpdatePostAction
             ->update([
                 'title' => $title = $attributes['title'],
                 'slug' => Str::slug(strval($title)),
-                'content' => $attributes['content'],
+                'content' => $this->addTailwindClassesToHeadings($attributes['content']),
             ]);
 
         $post->tags()->sync($attributes['tag_ids']);
 
         return $post->refresh();
 
+    }
+
+    /**
+     * TODO - refactor into TailwindParserClass
+     */
+    private function addTailwindClassesToHeadings(
+        string $content,
+    ): string {
+        /**
+         * @var string $h3Parsedcontent
+         */
+        $h3Parsedcontent = preg_replace('/<h3>(.*?)<\/h3>/', '<h3 class="text-2xl font-semibold">$1</h3>', $content);
+
+        return $h3Parsedcontent;
     }
 }

@@ -10,7 +10,7 @@
                 <button
                     @click="openMobile = ! openMobile"
                     type="button"
-                    class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-sky-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                     aria-controls="mobile-menu"
                     aria-expanded="false"
                 >
@@ -40,10 +40,10 @@
                 </div>
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
-                        <!-- Current: "bg-sky-300 text-white", Default: "text-gray-700 hover:bg-sky-300 hover:text-white" -->
+                        <!-- Current: "bg-gray-300 text-white", Default: "text-gray-700 hover:bg-gray-300 hover:text-white" -->
                         <a
                             href="{{ route('homepage') }}"
-                            class="rounded-md px-3 py-2 text-sm font-medium {{ request()->routeIs('homepage') ? 'bg-sky-300 text-white' : 'text-gray-700 hover:bg-sky-300 hover:text-white' }}"
+                            class="rounded-md px-3 py-2 text-sm font-medium {{ request()->routeIs('homepage') ? 'bg-gray-300 text-white' : 'text-gray-700 hover:bg-gray-300 hover:text-white' }}"
                             aria-current="page"
                         >
                             Accueil
@@ -51,14 +51,14 @@
 
                         <a
                             href="{{ route('posts.index') }}"
-                            class="rounded-md px-3 py-2 text-sm font-medium {{ in_array(Route::current()->getName(), ['posts.index', 'posts.show']) ? 'bg-sky-300 text-white' : 'text-gray-700 hover:bg-sky-300 hover:text-white' }}"
+                            class="rounded-md px-3 py-2 text-sm font-medium {{ in_array(Route::current()->getName(), ['posts.index', 'posts.show']) ? 'bg-gray-300 text-white' : 'text-gray-700 hover:bg-gray-300 hover:text-white' }}"
                         >
                             Blog
                         </a>
 
                         <a
                             href="{{ route('contact.index') }}"
-                            class="rounded-md px-3 py-2 text-sm font-medium  {{ request()->routeIs('contact.index') ? 'bg-sky-300 text-white' : 'text-gray-700 hover:bg-sky-300 hover:text-white' }}"
+                            class="rounded-md px-3 py-2 text-sm font-medium  {{ request()->routeIs('contact.index') ? 'bg-gray-300 text-white' : 'text-gray-700 hover:bg-gray-300 hover:text-white' }}"
                         >
                             Contact
                         </a>
@@ -139,22 +139,22 @@
         id="mobile-menu"
     >
         <div class="space-y-1 px-2 pb-3 pt-2">
-            <!-- Current: "bg-sky-300 text-white", Default: "text-gray-700 hover:bg-sky-300 hover:text-white" -->
+            <!-- Current: "bg-gray-300 text-white", Default: "text-gray-700 hover:bg-gray-300 hover:text-white" -->
             <a
                 href="{{ route('homepage') }}"
-                class="block rounded-md px-3 py-2 text-base font-medium {{ request()->routeIs('homepage') ? 'bg-sky-300 text-white' : 'text-gray-700 hover:bg-sky-300 hover:text-white' }}" aria-current="page"
+                class="block rounded-md px-3 py-2 text-base font-medium {{ request()->routeIs('homepage') ? 'bg-gray-300 text-white' : 'text-gray-700 hover:bg-gray-300 hover:text-white' }}" aria-current="page"
             >
                 Accueil
             </a>
 
             <a
                 href="{{ route('posts.index') }}"
-                class="text-gray-700 hover:bg-sky-300 hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ in_array(Route::current()->getName(), ['posts.index', 'posts.show']) ? 'bg-sky-300 text-white' : 'text-gray-700 hover:bg-sky-300 hover:text-white' }}"
+                class="text-gray-700 hover:bg-gray-300 hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ in_array(Route::current()->getName(), ['posts.index', 'posts.show']) ? 'bg-gray-300 text-white' : 'text-gray-700 hover:bg-gray-300 hover:text-white' }}"
             >
                 Blog
             </a>
 
-            <a href="#" class="text-gray-700 hover:bg-sky-300 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</a>
+            <a href="#" class="text-gray-700 hover:bg-gray-300 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact</a>
         </div>
     </div>
 </nav>

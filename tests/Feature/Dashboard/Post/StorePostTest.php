@@ -4,46 +4,26 @@ declare(strict_types=1);
 
 use App\Models\Post;
 use App\Models\Tag;
-use App\Models\User;
 
-use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\get;
-use function Pest\Laravel\put;
+use function Pest\Laravel\post;
 
-it('has an edit page', function () {
+it('has a post create page', function () {
     createAndLoggedIn();
-    $post = Post::factory()->create();
 
     get(
-        uri: route(
-            name: 'dashboard.posts.edit',
-            parameters: [
-                'post' => $post,
-            ],
-        ),
+        uri: route('dashboard.posts.create'),
     )
         ->assertOk();
 });
 
-it('can update a post', function () {
-    $user = User::factory()
-        ->hasPosts()
-        ->create();
-
+it('can store a post', function () {
+    $user = createAndLoggedIn();
     $tags = Tag::factory(3)->create();
 
-    $post = $user->posts()->firstOrFail();
-
-    actingAs($user);
-
-    put(
-        uri: route(
-            name: 'dashboard.posts.update',
-            parameters: [
-                'post' => $post,
-            ],
-        ),
+    post(
+        uri: route('dashboard.posts.store'),
         data: [
             'title' => $title = fake()->sentence,
             'content' => $content = fake()->paragraphs(3, true),
@@ -53,7 +33,7 @@ it('can update a post', function () {
         ->assertRedirect()
         ->assertSessionHas('success');
 
-    $post->refresh();
+    $post = Post::first();
 
     expect($post->title)->toBe($title);
     expect($post->slug)->toBe(\Illuminate\Support\Str::slug($title));

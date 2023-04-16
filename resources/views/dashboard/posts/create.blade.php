@@ -43,6 +43,7 @@
                     <label for="editor" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
                         Tags
                     </label>
+
                      <x-forms.multi-select
                          :tags="$tags"
                      />
