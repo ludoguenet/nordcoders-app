@@ -4,21 +4,27 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Dashboard\Tag;
 
+use App\Actions\Tag\UpdateTagAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\Tag\UpdateRequest;
 use App\Models\Tag;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 final class UpdateController extends Controller
 {
     public function __invoke(
-        Request $request,
+        UpdateRequest $request,
         Tag $tag,
     ): RedirectResponse {
-        $tag->update([
-            'name' => $request->name,
-            'colour' => $request->colour,
-        ]);
+        /**
+         * @var array{name: string, colour: string} $validated
+         */
+        $validated = $request->validated();
+
+        (new UpdateTagAction)(
+            tag: $tag,
+            attributes: $validated,
+        );
 
         return redirect()
             ->route('dashboard.tags.index')

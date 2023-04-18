@@ -50,7 +50,7 @@ final class Post extends Model
 
     /**
      * @param  \Illuminate\Database\Query\Builder  $query
-     * @return PostBuilder<\Illuminate\Database\Eloquent\Model>
+     * @return PostBuilder<Model>
      */
     public function newEloquentBuilder($query): PostBuilder
     {

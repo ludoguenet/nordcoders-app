@@ -7,16 +7,17 @@ namespace App\EloquentBuilders\Post;
 use App\Enums\Post\PostStatusEnum;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * @template TModelClass of \Illuminate\Database\Eloquent\Model
+ * @template TModelClass of Model
  *
  * @extends Builder<Post>
  */
 final class PostBuilder extends Builder
 {
     /**
-     * @return PostBuilder<\Illuminate\Database\Eloquent\Model>
+     * @return PostBuilder<TModelClass>
      */
     public function published(): self
     {
