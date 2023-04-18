@@ -24,11 +24,17 @@
                                     {{ $post->created_at->format('d/m/Y') }}
                                 </time>
                             </div>
-                            @foreach($post->tags as $tag)
-                                <a href="{{ route('posts.show', $post->slug) }}" class="relative z-10 rounded-full bg-{{ $tag->colour->value }}-50 px-3 py-1.5 font-medium text-{{ $tag->colour }}-600 hover:bg-{{ $tag->colour }}-100">
-                                    {{ $tag->name }}
-                                </a>
-                            @endforeach
+                            <a
+                                href="#"
+                                class="relative z-10 rounded-full bg-pink-50 px-3 py-1.5 font-medium text-pink-600 hover:bg-pink-100"
+                            >
+                                {{ $post->status }}
+                            </a>
+{{--                            @foreach($post->tags as $tag)--}}
+{{--                                <a href="{{ route('posts.show', $post->slug) }}" class="relative z-10 rounded-full bg-{{ $tag->colour->value }}-50 px-3 py-1.5 font-medium text-{{ $tag->colour }}-600 hover:bg-{{ $tag->colour }}-100">--}}
+{{--                                    {{ $tag->name }}--}}
+{{--                                </a>--}}
+{{--                            @endforeach--}}
                         </div>
                         <div class="group relative">
                             <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
@@ -42,7 +48,7 @@
                             </p>
                         </div>
                         <div class="relative mt-8 flex items-center gap-x-4">
-                            <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="h-10 w-10 rounded-full bg-gray-50">
+                            <img src="https://nordcoders.fr/avatar.png" alt="" class="h-10 w-10 rounded-full bg-gray-50">
                             <div class="text-sm leading-6">
                                 <p class="font-semibold text-gray-900">
                                     <a href="https://twitter.com/nordcoders">

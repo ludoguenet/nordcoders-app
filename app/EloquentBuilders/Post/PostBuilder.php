@@ -21,6 +21,10 @@ final class PostBuilder extends Builder
      */
     public function published(): self
     {
-        return $this->where('status', PostStatusEnum::PUBLISHED);
+        return $this->where(
+            column: 'status',
+            operator: '=',
+            value: PostStatusEnum::PUBLISHED,
+        );
     }
 }
